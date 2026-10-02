@@ -1,0 +1,10 @@
+{
+  "account": 0.1225,
+  "billing": 0.1225,
+  "complaint": 0.125625,
+  "delivery": 0.121875,
+  "feedback": 0.1175,
+  "product_info": 0.121875,
+  "returns": 0.13125,
+  "technical": 0.136875
+}
