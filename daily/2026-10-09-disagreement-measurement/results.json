@@ -1,0 +1,230 @@
+{
+  "judge_kind": "proxy",
+  "total": 20,
+  "judge_pass": 11,
+  "verifier_pass": 8,
+  "disagreements": 3,
+  "judge_overtrust": 3,
+  "results": [
+    {
+      "id": "good-1",
+      "claim": "authenticate checks the username and password against the user store",
+      "citation": "fixtures/auth.py:12",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.71 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.699 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "good-2",
+      "claim": "rank_chunks sorts chunks by score in descending order",
+      "citation": "fixtures/retrieval.py:15",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.86 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.773 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "good-3",
+      "claim": "recall_at_k measures the fraction of relevant documents found in the top k",
+      "citation": "fixtures/eval.py:5",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.67 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.719 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "good-4",
+      "claim": "fetch_all executes a query and returns every row",
+      "citation": "fixtures/db.py:12",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.50 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.580 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "good-5",
+      "claim": "chunk_text splits text into overlapping chunks",
+      "citation": "fixtures/retrieval.py:5",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.67 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.520 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "good-6",
+      "claim": "hash_password returns the SHA-256 hex digest of a password",
+      "citation": "fixtures/auth.py:7",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.75 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.790 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "good-7",
+      "claim": "make_session_token builds a readable session token for a logged-in user",
+      "citation": "fixtures/auth.py:20",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.78 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.802 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "good-8",
+      "claim": "connect opens a SQLite connection to the given path",
+      "citation": "fixtures/db.py:7",
+      "verifier": "SUPPORTED",
+      "verifier_reason": "line exists and token overlap 0.67 >= 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.791 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "wrong-line-1",
+      "claim": "authenticate checks the username and password against the user store",
+      "citation": "fixtures/auth.py:6",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.14 < 0.50",
+      "judge": "UNSUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.273 < 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "wrong-line-2",
+      "claim": "the connect helper opens a SQLite database connection",
+      "citation": "fixtures/eval.py:5",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.00 < 0.50",
+      "judge": "UNSUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.000 < 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "borderline-1",
+      "claim": "chunks are ranked by score with the best first",
+      "citation": "fixtures/retrieval.py:16",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.40 < 0.50",
+      "judge": "UNSUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.174 < 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "borderline-2",
+      "claim": "session tokens embed the username between fixed markers",
+      "citation": "fixtures/auth.py:21",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.33 < 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.658 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": false
+    },
+    {
+      "id": "borderline-3",
+      "claim": "fused ranking uses reciprocal rank fusion with k equals 60",
+      "citation": "fixtures/retrieval.py:25",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.33 < 0.50",
+      "judge": "UNSUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.266 < 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "borderline-4",
+      "claim": "sorting is done in reverse for descending rank",
+      "citation": "fixtures/retrieval.py:16",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.20 < 0.50",
+      "judge": "UNSUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.154 < 0.35",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "borderline-5",
+      "claim": "the session token concatenates a prefix, the username, and a suffix",
+      "citation": "fixtures/auth.py:21",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.33 < 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.533 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": false
+    },
+    {
+      "id": "borderline-6",
+      "claim": "passwords are encoded to UTF-8 before hashing",
+      "citation": "fixtures/auth.py:8",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line exists but token overlap 0.40 < 0.50",
+      "judge": "SUPPORTED",
+      "judge_reason": "proxy judge: cosine 0.528 >= 0.35",
+      "judge_kind": "proxy",
+      "agree": false
+    },
+    {
+      "id": "hallucinated-file",
+      "claim": "the cache layer stores embeddings in Redis",
+      "citation": "fixtures/cache.py:3",
+      "verifier": "MALFORMED",
+      "verifier_reason": "cited file does not exist: fixtures/cache.py",
+      "judge": "MALFORMED",
+      "judge_reason": "cited file does not exist: fixtures/cache.py",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "malformed-citation",
+      "claim": "authenticate checks credentials",
+      "citation": "fixtures/auth.py",
+      "verifier": "MALFORMED",
+      "verifier_reason": "malformed citation: expected format path/to/file.py:LINE, got 'fixtures/auth.py'",
+      "judge": "MALFORMED",
+      "judge_reason": "malformed citation: expected format path/to/file.py:LINE, got 'fixtures/auth.py'",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "line-out-of-range",
+      "claim": "recall is computed over the full retrieved list",
+      "citation": "fixtures/eval.py:99",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "line 99 out of range (file has 15 lines)",
+      "judge": "UNSUPPORTED",
+      "judge_reason": "line 99 out of range, nothing to score",
+      "judge_kind": "proxy",
+      "agree": true
+    },
+    {
+      "id": "empty-claim",
+      "claim": "",
+      "citation": "fixtures/auth.py:11",
+      "verifier": "UNSUPPORTED",
+      "verifier_reason": "claim has no content tokens to match",
+      "judge": "UNSUPPORTED",
+      "judge_reason": "proxy: empty claim or empty line",
+      "judge_kind": "proxy",
+      "agree": true
+    }
+  ]
+}
