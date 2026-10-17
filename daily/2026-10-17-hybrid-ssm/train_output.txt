@@ -1,0 +1,76 @@
+
+=== training ssm-1L ===
+  step   0  loss 3.1132
+  step  50  loss 2.0787
+  step 100  loss 1.9919
+  step 150  loss 2.0691
+  step 200  loss 2.0632
+  step 250  loss 2.0159
+  step 300  loss 2.0069
+  step 350  loss 1.9972
+  step 400  loss 2.0510
+  step 450  loss 2.0229
+  step 500  loss 2.0796
+  step 550  loss 2.0732
+  step 600  loss 2.0281
+  step 650  loss 2.0887
+  step 700  loss 2.0322
+  step 750  loss 2.0444
+  step 799  loss 2.0277
+  -> final loss 2.0277, held-out acc 0.193, train wall time 89.0s
+
+=== training attn-1L ===
+  step   0  loss 2.8760
+  step  50  loss 2.1143
+  step 100  loss 2.0238
+  step 150  loss 2.0699
+  step 200  loss 2.0781
+  step 250  loss 2.0385
+  step 300  loss 2.0402
+  step 350  loss 2.0736
+  step 400  loss 2.0461
+  step 450  loss 2.0298
+  step 500  loss 2.0544
+  step 550  loss 2.0589
+  step 600  loss 2.0345
+  step 650  loss 2.0635
+  step 700  loss 2.0223
+  step 750  loss 2.0106
+  step 799  loss 2.0457
+  -> final loss 2.0457, held-out acc 0.184, train wall time 57.3s
+
+=== training attn-2L ===
+  step   0  loss 3.0971
+  step  50  loss 2.1099
+  step 100  loss 2.0104
+  step 150  loss 2.0029
+  step 200  loss 1.7978
+  step 250  loss 1.6080
+  step 300  loss 1.5635
+  step 350  loss 1.5614
+  step 400  loss 1.4973
+  step 450  loss 1.3699
+  step 500  loss 1.0259
+  step 550  loss 0.6476
+  step 600  loss 0.5348
+  step 650  loss 0.7442
+  step 700  loss 0.5750
+  step 750  loss 0.6114
+  step 799  loss 0.5178
+  -> final loss 0.5178, held-out acc 0.846, train wall time 115.7s
+
+=== selectivity probe (mean Delta by token type, ssm-1L) ===
+  noise tokens : 0.0508
+  markers      : 0.0626
+  needles      : 0.0521
+  query tokens : 0.0626
+
+=== scaling benchmark (forward+backward, batch=2, D=64, N=32) ===
+       L |  SSM (ms) | attention (ms) | ratio
+     256 |     156.9 |          126.3 |  0.80x
+     512 |     776.9 |          516.1 |  0.66x  [2x L: SSM x4.95, attn x4.09]
+    1024 |    2391.2 |         2959.2 |  1.24x  [2x L: SSM x3.08, attn x5.73]
+    2048 |    2098.5 |        10033.6 |  4.78x  [2x L: SSM x0.88, attn x3.39]
+
+theory: SSM scan is O(L*D*N) with a fixed-size state; causal
+attention materializes an LxL score matrix -> O(L^2*D) time and memory.
