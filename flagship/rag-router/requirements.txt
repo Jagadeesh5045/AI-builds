@@ -1,0 +1,8 @@
+# rag-router dependencies (loose pins; everything runs offline, no API keys)
+fastapi>=0.100
+uvicorn>=0.23
+scikit-learn>=1.3
+rank-bm25>=0.2.2
+duckdb>=0.9
+numpy>=1.24
+pandas>=2.0

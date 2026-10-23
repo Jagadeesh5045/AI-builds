@@ -1,0 +1,54 @@
+{"query": "How much does express delivery cost and when does it arrive?", "label": "vector", "relevant_doc_ids": ["kb_shipping"], "k": 5}
+{"query": "Do you deliver to Northern Ireland?", "label": "vector", "relevant_doc_ids": ["kb_shipping"], "k": 5}
+{"query": "My headphones will not charge. Any fixes?", "label": "vector", "relevant_doc_ids": ["kb_troubleshoot_headphones"], "k": 5}
+{"query": "My wireless keyboard keeps dropping its connection. Help?", "label": "vector", "relevant_doc_ids": ["kb_troubleshoot_keyboard"], "k": 5}
+{"query": "How do I stop my Bluetooth keyboard disconnecting?", "label": "vector", "relevant_doc_ids": ["kb_troubleshoot_keyboard"], "k": 5}
+{"query": "How high should I mount the video doorbell?", "label": "vector", "relevant_doc_ids": ["kb_install_doorbell"], "k": 5}
+{"query": "Do you sell my personal data to advertisers?", "label": "vector", "relevant_doc_ids": ["kb_data_privacy"], "k": 5}
+{"query": "How do I delete my account data?", "label": "vector", "relevant_doc_ids": ["kb_data_privacy"], "k": 5}
+{"query": "How do I set up multiroom audio on the smart speaker?", "label": "vector", "relevant_doc_ids": ["kb_speaker_setup"], "k": 5}
+{"query": "Can I turn off personalised recommendations?", "label": "vector", "relevant_doc_ids": ["co_recommendations", "kb_data_privacy"], "k": 5}
+{"query": "How many devices did your repair centres fix last year?", "label": "vector", "relevant_doc_ids": ["co_sustainability"], "k": 5}
+{"query": "Where can I find a VAT invoice for my order?", "label": "vector", "relevant_doc_ids": ["kb_account"], "k": 5}
+{"query": "Aurora X9 Wireless Headphones battery life", "label": "keyword", "relevant_doc_ids": ["P001"], "k": 5}
+{"query": "What is the price of the VoltEdge 20000mAh Power Bank?", "label": "keyword", "relevant_doc_ids": ["P002"], "k": 5}
+{"query": "SKU KB-2041 specifications", "label": "keyword", "relevant_doc_ids": ["P003"], "k": 5}
+{"query": "LumenDesk LED Monitor Light colour temperatures", "label": "keyword", "relevant_doc_ids": ["P004"], "k": 5}
+{"query": "PulseFit Smartwatch S2 GPS accuracy", "label": "keyword", "relevant_doc_ids": ["P006"], "k": 5}
+{"query": "EchoDot Mini Smart Speaker multiroom pairing", "label": "keyword", "relevant_doc_ids": ["P008"], "k": 5}
+{"query": "Vertex 27in 4K Monitor sRGB coverage", "label": "keyword", "relevant_doc_ids": ["P013"], "k": 5}
+{"query": "CloudRest Memory Foam Pillow washable cover", "label": "keyword", "relevant_doc_ids": ["P014"], "k": 5}
+{"query": "SolarFlare Outdoor Camera solar panel charging", "label": "keyword", "relevant_doc_ids": ["P016"], "k": 5}
+{"query": "Zenith Noise Cancelling Headphones LDAC support", "label": "keyword", "relevant_doc_ids": ["P020"], "k": 5}
+{"query": "FlexStand Laptop Riser height angles", "label": "keyword", "relevant_doc_ids": ["P023"], "k": 5}
+{"query": "ergonomic keyboard with tenting", "label": "keyword", "relevant_doc_ids": ["P003"], "k": 5}
+{"query": "What was the best-selling product by revenue in April?", "label": "sql", "kind": "top_product_month", "params": {"month": "april", "product_id": "P007", "product_name": "Nimbus Mesh Office Chair", "region": "south"}}
+{"query": "What is the total quantity sold of Stratos Ultralight Laptop 14?", "label": "sql", "kind": "sum_units_product", "params": {"month": "february", "product_id": "P005", "product_name": "Stratos Ultralight Laptop 14", "region": "north"}}
+{"query": "Units sold for Vertex 27in 4K Monitor?", "label": "sql", "kind": "sum_units_product", "params": {"month": "june", "product_id": "P013", "product_name": "Vertex 27in 4K Monitor", "region": "north"}}
+{"query": "Revenue from the South region in February?", "label": "sql", "kind": "sum_revenue_region_month", "params": {"month": "february", "product_id": "P014", "product_name": "CloudRest Memory Foam Pillow", "region": "south"}}
+{"query": "Which product had the highest revenue in April?", "label": "sql", "kind": "top_product_month", "params": {"month": "april", "product_id": "P022", "product_name": "DuraCell Power Station 500", "region": "south"}}
+{"query": "What is the order count for April?", "label": "sql", "kind": "count_orders_month", "params": {"month": "april", "product_id": "P022", "product_name": "DuraCell Power Station 500", "region": "south"}}
+{"query": "Average order value for North?", "label": "sql", "kind": "avg_order_region", "params": {"month": "january", "product_id": "P023", "product_name": "FlexStand Laptop Riser", "region": "north"}}
+{"query": "Revenue from the North region in March?", "label": "sql", "kind": "sum_revenue_region_month", "params": {"month": "march", "product_id": "P013", "product_name": "Vertex 27in 4K Monitor", "region": "north"}}
+{"query": "Units sold for Aurora X9 Wireless Headphones?", "label": "sql", "kind": "sum_units_product", "params": {"month": "may", "product_id": "P001", "product_name": "Aurora X9 Wireless Headphones", "region": "west"}}
+{"query": "How many units of OrbitView Webcam 4K were sold?", "label": "sql", "kind": "sum_units_product", "params": {"month": "march", "product_id": "P018", "product_name": "OrbitView Webcam 4K", "region": "north"}}
+{"query": "What was the total revenue from West in May?", "label": "sql", "kind": "sum_revenue_region_month", "params": {"month": "may", "product_id": "P007", "product_name": "Nimbus Mesh Office Chair", "region": "west"}}
+{"query": "How much sales revenue did we make in March?", "label": "sql", "kind": "sum_revenue_month", "params": {"month": "march", "product_id": "P005", "product_name": "Stratos Ultralight Laptop 14", "region": "south"}}
+{"query": "Number of orders in June?", "label": "sql", "kind": "count_orders_month", "params": {"month": "june", "product_id": "P015", "product_name": "IronClad Mechanical Keyboard", "region": "south"}}
+{"query": "How many orders did PulseFit Smartwatch S2 get in June?", "label": "sql", "kind": "count_orders_product_month", "params": {"month": "june", "product_id": "P006", "product_name": "PulseFit Smartwatch S2", "region": "north"}}
+{"query": "How many orders were placed in January?", "label": "sql", "kind": "count_orders_month", "params": {"month": "january", "product_id": "P006", "product_name": "PulseFit Smartwatch S2", "region": "west"}}
+{"query": "Top product by revenue in January?", "label": "sql", "kind": "top_product_month", "params": {"month": "january", "product_id": "P014", "product_name": "CloudRest Memory Foam Pillow", "region": "north"}}
+{"query": "What is the order count for March?", "label": "sql", "kind": "count_orders_month", "params": {"month": "march", "product_id": "P020", "product_name": "Zenith Noise Cancelling Headphones", "region": "north"}}
+{"query": "What was the best-selling product by revenue in March?", "label": "sql", "kind": "top_product_month", "params": {"month": "march", "product_id": "P005", "product_name": "Stratos Ultralight Laptop 14", "region": "west"}}
+{"query": "How many units of PixelPen Stylus Gen 3 were sold?", "label": "sql", "kind": "sum_units_product", "params": {"month": "january", "product_id": "P021", "product_name": "PixelPen Stylus Gen 3", "region": "south"}}
+{"query": "What was the total revenue from West in March?", "label": "sql", "kind": "sum_revenue_region_month", "params": {"month": "march", "product_id": "P018", "product_name": "OrbitView Webcam 4K", "region": "west"}}
+{"query": "What is the order count for March?", "label": "sql", "kind": "count_orders_month", "params": {"month": "march", "product_id": "P023", "product_name": "FlexStand Laptop Riser", "region": "west"}}
+{"query": "How much sales revenue did we make in February?", "label": "sql", "kind": "sum_revenue_month", "params": {"month": "february", "product_id": "P024", "product_name": "VistaCam Baby Monitor", "region": "south"}}
+{"query": "Top product by revenue in January?", "label": "sql", "kind": "top_product_month", "params": {"month": "january", "product_id": "P004", "product_name": "LumenDesk LED Monitor Light", "region": "north"}}
+{"query": "What is the order count for March?", "label": "sql", "kind": "count_orders_month", "params": {"month": "march", "product_id": "P006", "product_name": "PulseFit Smartwatch S2", "region": "south"}}
+{"query": "Top product by revenue in February?", "label": "sql", "kind": "top_product_month", "params": {"month": "february", "product_id": "P007", "product_name": "Nimbus Mesh Office Chair", "region": "east"}}
+{"query": "Revenue from the North region in February?", "label": "sql", "kind": "sum_revenue_region_month", "params": {"month": "february", "product_id": "P009", "product_name": "TerraPro 4K Action Camera", "region": "north"}}
+{"query": "Which product had the highest revenue in February?", "label": "sql", "kind": "top_product_month", "params": {"month": "february", "product_id": "P022", "product_name": "DuraCell Power Station 500", "region": "north"}}
+{"query": "How many orders did Aurora X9 Wireless Headphones get in March?", "label": "sql", "kind": "count_orders_product_month", "params": {"month": "march", "product_id": "P001", "product_name": "Aurora X9 Wireless Headphones", "region": "north"}}
+{"query": "Average order value for West?", "label": "sql", "kind": "avg_order_region", "params": {"month": "february", "product_id": "P013", "product_name": "Vertex 27in 4K Monitor", "region": "west"}}
+{"query": "Average order value for West?", "label": "sql", "kind": "avg_order_region", "params": {"month": "april", "product_id": "P013", "product_name": "Vertex 27in 4K Monitor", "region": "west"}}

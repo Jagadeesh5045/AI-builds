@@ -1,0 +1,25 @@
+product_id,name,sku,category,price
+P001,Aurora X9 Wireless Headphones,WH-1002,Audio,189.99
+P002,VoltEdge 20000mAh Power Bank,PB-2000,Accessories,39.99
+P003,ErgoType Split Keyboard,KB-2041,Computing,129.5
+P004,LumenDesk LED Monitor Light,ML-1105,Accessories,54.0
+P005,Stratos Ultralight Laptop 14,LT-8814,Computing,999.0
+P006,PulseFit Smartwatch S2,SW-3302,Wearables,229.99
+P007,Nimbus Mesh Office Chair,CH-4410,Furniture,349.0
+P008,EchoDot Mini Smart Speaker,SP-5501,Smart Home,49.99
+P009,TerraPro 4K Action Camera,AC-7712,Cameras,279.0
+P010,GlidePro Wireless Mouse,MS-2210,Computing,59.99
+P011,HaloRing Video Doorbell,DB-6610,Smart Home,149.99
+P012,AeroPods Pro Earbuds,EB-9903,Audio,149.0
+P013,Vertex 27in 4K Monitor,MN-2714,Computing,429.99
+P014,CloudRest Memory Foam Pillow,PL-1201,Home,34.99
+P015,IronClad Mechanical Keyboard,KB-2077,Computing,159.0
+P016,SolarFlare Outdoor Camera,SC-8810,Smart Home,119.99
+P017,JetStream Handheld Vacuum,VC-3315,Home,139.0
+P018,OrbitView Webcam 4K,WC-4402,Computing,89.99
+P019,ThunderBolt 65W GaN Charger,CH-6501,Accessories,45.0
+P020,Zenith Noise Cancelling Headphones,WH-1010,Audio,249.99
+P021,PixelPen Stylus Gen 3,ST-3301,Accessories,79.0
+P022,DuraCell Power Station 500,PS-5001,Smart Home,399.0
+P023,FlexStand Laptop Riser,LS-2214,Accessories,42.5
+P024,VistaCam Baby Monitor,BM-1102,Smart Home,99.99

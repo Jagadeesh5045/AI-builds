@@ -1,0 +1,29 @@
+{
+  "n_eval": 54,
+  "routing_accuracy": 0.9259259259259259,
+  "paths": {
+    "vector": {
+      "n": 12,
+      "mean_recall@5": 0.9583333333333334,
+      "sql_answer_accuracy": null,
+      "mean_latency_ms": 2.677135833370888
+    },
+    "keyword": {
+      "n": 12,
+      "mean_recall@5": 1.0,
+      "sql_answer_accuracy": null,
+      "mean_latency_ms": 1.4605747500032369
+    },
+    "sql": {
+      "n": 30,
+      "mean_recall@5": null,
+      "sql_answer_accuracy": 1.0,
+      "mean_latency_ms": 37.63429643332756
+    }
+  },
+  "ablation": {
+    "routed_mean_recall@5": 0.9791666666666666,
+    "vector_only_mean_recall@5": 0.9791666666666666,
+    "keyword_only_mean_recall@5": 0.9791666666666666
+  }
+}
