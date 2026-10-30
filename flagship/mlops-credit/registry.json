@@ -1,0 +1,49 @@
+[
+  {
+    "version": "v1",
+    "model_type": "LogisticRegression",
+    "hyperparameters": {
+      "max_iter": 1000,
+      "solver": "lbfgs"
+    },
+    "metrics": {
+      "accuracy": 0.803,
+      "roc_auc": 0.6886,
+      "precision": 0.5641,
+      "recall": 0.1089,
+      "f1": 0.1826
+    },
+    "timestamp": "2026-10-30T12:59:32.352182+00:00",
+    "status": "champion"
+  },
+  {
+    "version": "v2",
+    "model_type": "RandomForestClassifier",
+    "hyperparameters": {
+      "n_estimators": 200,
+      "random_state": 42
+    },
+    "metrics": {
+      "accuracy": 0.808,
+      "roc_auc": 0.658,
+      "precision": 0.6087,
+      "recall": 0.1386,
+      "f1": 0.2258
+    },
+    "timestamp": "2026-10-30T12:59:32.352739+00:00",
+    "status": "challenger"
+  },
+  {
+    "version": "v3",
+    "model_type": "LogisticRegression",
+    "hyperparameters": {
+      "max_iter": 1000,
+      "solver": "lbfgs"
+    },
+    "metrics": {
+      "note": "retrained after drift trigger"
+    },
+    "timestamp": "2026-10-30T12:59:32.535437+00:00",
+    "status": "challenger"
+  }
+]
