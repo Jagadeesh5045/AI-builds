@@ -1,0 +1,108 @@
+// Card Ledger data model, DBML (dbdiagram.io compatible)
+// Portfolio project. Synthetic data only. Currency GBP throughout.
+
+Project card_ledger {
+  database_type: 'PostgreSQL'
+  note: 'Card issuer ledger: members, cards, merchants, authorisations, transactions (monthly RANGE partitioned), double entry ledger, statements, settlements, reconciliation exceptions.'
+}
+
+Table card_members {
+  member_id bigint [pk, increment]
+  full_name varchar(120) [not null]
+  email varchar(200) [not null, unique]
+  joined_date date [not null]
+}
+
+Table cards {
+  card_id bigint [pk, increment]
+  member_id bigint [not null, ref: > card_members.member_id]
+  card_number_token varchar(32) [not null, unique]
+  network varchar(20) [not null]
+  status varchar(10) [not null, note: 'active, blocked or closed']
+  issued_date date [not null]
+}
+
+Table merchants {
+  merchant_id bigint [pk, increment]
+  merchant_name varchar(120) [not null]
+  mcc varchar(4) [not null]
+  country varchar(60) [not null]
+}
+
+Table authorisations {
+  auth_id bigint [pk, increment]
+  card_id bigint [not null, ref: > cards.card_id]
+  merchant_id bigint [not null, ref: > merchants.merchant_id]
+  amount numeric(12,2) [not null]
+  currency char(3) [not null, default: 'GBP']
+  auth_status varchar(10) [not null, note: 'approved or declined']
+  authorised_at timestamp [not null]
+}
+
+Table transactions {
+  txn_id bigint [not null, increment]
+  card_id bigint [not null, ref: > cards.card_id]
+  member_id bigint [not null, ref: > card_members.member_id, note: 'Denormalised from cards, see normalisation note']
+  merchant_id bigint [not null, ref: > merchants.merchant_id]
+  auth_id bigint [note: 'Plain column, deliberately not an FK, see physical model']
+  amount numeric(12,2) [not null]
+  currency char(3) [not null, default: 'GBP']
+  txn_type varchar(10) [not null, note: 'purchase or refund']
+  status varchar(10) [not null, note: 'posted or reversed']
+  transaction_date date [not null]
+  indexes {
+    (txn_id, transaction_date) [pk, note: 'Partition key must be in the PK']
+    (member_id, transaction_date) [name: 'idx_txn_member_date']
+    (merchant_id, transaction_date) [name: 'idx_txn_merchant_date']
+    (auth_id) [name: 'idx_txn_auth']
+  }
+  Note: 'RANGE partitioned by transaction_date, monthly partitions 2026-07, 2026-08, 2026-09 plus DEFAULT'
+}
+
+Table ledger_entries {
+  entry_id bigint [pk, increment]
+  txn_id bigint [not null, note: 'References transactions(txn_id); not an FK because transactions is partitioned']
+  account_code varchar(10) [not null, note: '1100 member receivable, 2100 merchant payable']
+  debit numeric(12,2) [not null, default: 0]
+  credit numeric(12,2) [not null, default: 0]
+  entry_date date [not null]
+  indexes {
+    (txn_id) [name: 'idx_ledger_txn']
+  }
+}
+
+Table statements {
+  statement_id bigint [pk, increment]
+  member_id bigint [not null, ref: > card_members.member_id]
+  period_start date [not null]
+  period_end date [not null]
+  opening_balance numeric(12,2) [not null]
+  closing_balance numeric(12,2) [not null]
+  due_date date [not null]
+  indexes {
+    (member_id, period_start) [unique]
+  }
+}
+
+Table settlements {
+  settlement_id bigint [pk, increment]
+  merchant_id bigint [not null, ref: > merchants.merchant_id]
+  settlement_date date [not null]
+  gross_amount numeric(12,2) [not null]
+  fees numeric(12,2) [not null]
+  net_amount numeric(12,2) [not null]
+  txn_count int [not null]
+  indexes {
+    (merchant_id, settlement_date) [unique]
+  }
+}
+
+Table reconciliation_exceptions {
+  exception_id bigint [pk, increment]
+  source_table varchar(40) [not null]
+  source_id bigint [not null]
+  issue_type varchar(40) [not null, note: 'auth_amount_mismatch, missing_ledger_entries, settlement_amount_mismatch']
+  expected_amount numeric(12,2)
+  actual_amount numeric(12,2)
+  detected_at timestamp [not null]
+}

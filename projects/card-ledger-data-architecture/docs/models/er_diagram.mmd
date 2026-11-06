@@ -1,0 +1,89 @@
+%% Card Ledger ER diagram, Mermaid erDiagram syntax. Synthetic data only.
+erDiagram
+    card_members ||--o{ cards : "holds"
+    card_members ||--o{ statements : "is billed on"
+    card_members ||--o{ transactions : "generates"
+    cards ||--o{ authorisations : "is used in"
+    cards ||--o{ transactions : "is used in"
+    merchants ||--o{ authorisations : "requests"
+    merchants ||--o{ transactions : "accepts"
+    merchants ||--o{ settlements : "is paid through"
+    authorisations |o--o| transactions : "may clear into"
+    transactions ||--o{ ledger_entries : "is posted as"
+
+    card_members {
+        bigint member_id PK
+        varchar full_name
+        varchar email UK
+        date joined_date
+    }
+    cards {
+        bigint card_id PK
+        bigint member_id FK
+        varchar card_number_token UK
+        varchar network
+        varchar status
+        date issued_date
+    }
+    merchants {
+        bigint merchant_id PK
+        varchar merchant_name
+        varchar mcc
+        varchar country
+    }
+    authorisations {
+        bigint auth_id PK
+        bigint card_id FK
+        bigint merchant_id FK
+        numeric amount
+        char currency
+        varchar auth_status
+        timestamp authorised_at
+    }
+    transactions {
+        bigint txn_id PK
+        date transaction_date PK
+        bigint card_id FK
+        bigint member_id FK
+        bigint merchant_id FK
+        bigint auth_id "no FK, deliberate"
+        numeric amount
+        char currency
+        varchar txn_type
+        varchar status
+    }
+    ledger_entries {
+        bigint entry_id PK
+        bigint txn_id "references transactions"
+        varchar account_code
+        numeric debit
+        numeric credit
+        date entry_date
+    }
+    statements {
+        bigint statement_id PK
+        bigint member_id FK
+        date period_start
+        date period_end
+        numeric opening_balance
+        numeric closing_balance
+        date due_date
+    }
+    settlements {
+        bigint settlement_id PK
+        bigint merchant_id FK
+        date settlement_date
+        numeric gross_amount
+        numeric fees
+        numeric net_amount
+        int txn_count
+    }
+    reconciliation_exceptions {
+        bigint exception_id PK
+        varchar source_table
+        bigint source_id
+        varchar issue_type
+        numeric expected_amount
+        numeric actual_amount
+        timestamp detected_at
+    }

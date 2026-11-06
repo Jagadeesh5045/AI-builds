@@ -1,0 +1,30 @@
+{
+  "total": 12,
+  "auth_amount_mismatch": {
+    "txn_ids": [
+      24102,
+      50872,
+      86996
+    ],
+    "count": 3
+  },
+  "missing_ledger_entries": {
+    "txn_ids": [
+      6330,
+      6584,
+      51496,
+      87369
+    ],
+    "count": 4
+  },
+  "settlement_amount_mismatch": {
+    "settlement_ids": [
+      2012,
+      2589,
+      3271,
+      8350,
+      12598
+    ],
+    "count": 5
+  }
+}

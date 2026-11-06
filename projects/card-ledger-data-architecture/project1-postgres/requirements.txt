@@ -1,0 +1,4 @@
+psycopg[binary]
+pytest
+pgserver
+pglast
