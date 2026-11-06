@@ -49,6 +49,17 @@ and clearly labelled synthetic. Nothing here is commercial or client work.
   restore drill (PostgreSQL dump restored in 0.258s, 20,000 rows, totals identical).
 - Tests: 3 passed. Full record: project3-cqrs/RESULTS.md.
 
+### Project 4: Distributed SQL run on YugabyteDB (project4-yugabyte/)
+- The Project 1 schema run on a real single-node YugabyteDB 2024.2.3.2 cluster
+  (YSQL): 50,000 synthetic transactions loaded, each monthly partition hash-sharded
+  (the August partition held 2 tablets, verified with yb-admin).
+- Member statement lookup median 1.450 ms (client-side, 5 runs); merchant daily
+  totals median 6.540 ms; ledger reconciliation exact (debits equal credits at
+  8,977,229.35, signed totals matching transactions) with 0 exceptions.
+- Single node at replication factor 1: multi-node replication and failover are
+  design reasoning in distributed_design.md, not measured behaviour.
+- Full record: project4-yugabyte/RESULTS.md.
+
 ## Honest scope
 
 These projects create project-level evidence for data modelling, PostgreSQL,
