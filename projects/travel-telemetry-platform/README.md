@@ -60,7 +60,7 @@ flowchart LR
 | Source in the brief | Implementation here |
 | --- | --- |
 | App telemetry warehouse (Snowflake-style) | DuckDB table locally; KPI queries authored in Snowflake dialect, transpiled and validated with sqlglot, executed on DuckDB |
-| Log search (ELF / OpenSearch) | opensearch-py query builder and client wrapper, unit-tested with a mocked client. No OpenSearch server was run |
+| Log search (ELF / OpenSearch) | opensearch-py query layer run against a real local OpenSearch 2.19.1 single node: 900 telemetry documents indexed, domain, range and aggregation queries executed. See RESULTS_OPENSEARCH.md |
 | App Store Connect style metrics | REST ingestor consuming a local JSON file with the REST response shape |
 | Jira / QE style data | QE domain in the generator: defects opened/closed, regression failures |
 
@@ -101,7 +101,7 @@ Secrets come from environment variables only; no secret exists in this repo.
 | Anomaly detection scored vs ground truth | Yes, see RESULTS.md | |
 | S3 Parquet write and read-back | Yes, against moto (mock S3) through real boto3 | Real AWS S3 bucket: no |
 | JWT issue, verify, expiry rejection | Yes | |
-| OpenSearch client and query layer | Unit-tested with mocked client | OpenSearch server: never run |
+| OpenSearch client and query layer | Yes, against a real local OpenSearch 2.19.1 single node (security disabled, loopback only): 900 docs indexed, queries and aggregation executed, see RESULTS_OPENSEARCH.md | Production cluster, replication and security configuration: no |
 | Streamlit multi-page app | Yes, headless via AppTest | |
 | Dockerfile and docker-compose | | Authored and YAML-checked only. No Docker in this environment, image never built |
 | Kubernetes manifests | | Authored and field-validated in tests only. Never applied to a cluster |

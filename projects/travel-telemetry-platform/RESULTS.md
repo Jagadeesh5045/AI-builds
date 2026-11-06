@@ -12,7 +12,9 @@ synthetic (seed 42) and is labelled synthetic everywhere it appears.
   requires NumPy 2.0 or newer. Resolved by installing requirements.txt into
   the project virtualenv instead. No code changes were needed.
 - No Docker, no Kubernetes, no OpenSearch server, no Snowflake account and
-  no AWS account in this environment. See the could-not-run section.
+  no AWS account in this environment at the time of this original run. See
+  the could-not-run section, and RESULTS_OPENSEARCH.md for the OpenSearch
+  follow-up run later the same day.
 
 ## Commands run
 
@@ -107,9 +109,12 @@ query-param page sync are exercised by those runs.
   The image was never built and the compose stack never started.
 - Kubernetes: no cluster available. Manifests are authored and validated by
   parsing the YAML and asserting required fields in tests. Never applied.
-- OpenSearch server: none was run. The opensearch-py client and query layer
-  are implemented and unit-tested with the client mocked. No live cluster was
-  contacted and no real search was executed against a server.
+- OpenSearch server: at the time of the original run above, none was run and
+  the client was mock-tested only. This is superseded by a follow-up live run
+  on the same day: a real local OpenSearch 2.19.1 single node served 900
+  indexed documents and real domain, range and aggregation queries through
+  this project's client code, and the full test suite passed 30 of 30 with
+  the server up. Full record: RESULTS_OPENSEARCH.md.
 - Snowflake: no account. The Snowflake-dialect queries were validated by
   sqlglot transpilation to DuckDB and executed there. That validates the SQL
   dialect, not a Snowflake deployment.
