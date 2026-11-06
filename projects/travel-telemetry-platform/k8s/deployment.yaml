@@ -1,0 +1,41 @@
+# Authored artefact, YAML-validated in the test suite. Not applied to any
+# cluster: no Kubernetes in the build environment.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: travel-telemetry-platform
+  labels:
+    app: travel-telemetry-platform
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: travel-telemetry-platform
+  template:
+    metadata:
+      labels:
+        app: travel-telemetry-platform
+    spec:
+      containers:
+        - name: app
+          image: travel-telemetry-platform:latest
+          ports:
+            - containerPort: 8501
+          envFrom:
+            - configMapRef:
+                name: travel-telemetry-config
+            - secretRef:
+                name: travel-telemetry-secrets
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi

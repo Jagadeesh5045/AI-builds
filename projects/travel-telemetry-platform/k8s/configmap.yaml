@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: travel-telemetry-config
+  labels:
+    app: travel-telemetry-platform
+data:
+  TELEMETRY_S3_BUCKET: travel-telemetry
+  AWS_DEFAULT_REGION: eu-west-2
+  TELEMETRY_INDEX: telemetry-logs
+---
+# The Secret itself is never committed. Create it out of band, for example:
+# kubectl create secret generic travel-telemetry-secrets --from-literal=JWT_SECRET=<value>
+# Only its reference appears in the Deployment.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: travel-telemetry-secrets
+  labels:
+    app: travel-telemetry-platform
+type: Opaque
+stringData: {}

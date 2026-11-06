@@ -1,0 +1,22 @@
+# Authored artefact, YAML-validated in the test suite. Not run: no Docker in
+# the build environment. The opensearch service documents the intended local
+# topology; the app code treats OpenSearch as a query layer only.
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      TELEMETRY_S3_BUCKET: travel-telemetry
+      AWS_DEFAULT_REGION: eu-west-2
+    env_file:
+      - .env
+    depends_on:
+      - opensearch
+  opensearch:
+    image: opensearchproject/opensearch:2.15.0
+    environment:
+      discovery.type: single-node
+      DISABLE_SECURITY_PLUGIN: "true"
+    ports:
+      - "9200:9200"

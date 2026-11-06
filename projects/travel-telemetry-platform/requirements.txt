@@ -1,0 +1,17 @@
+pandas
+numpy
+scipy
+streamlit
+plotly
+matplotlib
+seaborn
+pyarrow
+boto3
+moto
+PyJWT
+cryptography
+pytest
+duckdb
+sqlglot
+opensearch-py
+pyyaml
