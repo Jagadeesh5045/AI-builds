@@ -1,0 +1,3 @@
+# Runtime: Python standard library only (sqlite3, csv, random).
+# Tests:
+pytest>=8.0
