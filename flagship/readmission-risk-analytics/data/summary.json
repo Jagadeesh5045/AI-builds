@@ -1,0 +1,262 @@
+{
+  "etl": {
+    "raw_rows": 8075,
+    "warehouse_rows": 8000,
+    "quarantined_rows": 75,
+    "quarantine_reasons": {
+      "invalid primary_condition: UNKNOWN_CONDITION": 5,
+      "invalid sex code: X": 5,
+      "invalid age_band: 120+": 5,
+      "prior_admissions out of range: 99": 5,
+      "missing value: primary_condition": 5,
+      "missing value: discharge_destination": 5,
+      "deprivation_quintile out of range: 9": 5,
+      "deprivation_quintile out of range: 0": 5,
+      "length_of_stay_days out of range: 999": 5,
+      "duplicate discharge_id": 5,
+      "prior_admissions out of range: -1": 5,
+      "invalid admission_type: walk-in": 5,
+      "comorbidity_count out of range: -2": 5,
+      "invalid readmitted_30d flag: 2": 5,
+      "length_of_stay_days out of range: -4": 5
+    }
+  },
+  "analytics": {
+    "total_discharges": 8000,
+    "total_readmissions": 1363,
+    "overall_rate": 0.1704,
+    "by_condition": {
+      "AMI": {
+        "discharges": 921,
+        "readmissions": 137,
+        "rate": 0.1488
+      },
+      "COPD": {
+        "discharges": 1182,
+        "readmissions": 230,
+        "rate": 0.1946
+      },
+      "diabetes": {
+        "discharges": 1022,
+        "readmissions": 153,
+        "rate": 0.1497
+      },
+      "heart failure": {
+        "discharges": 1260,
+        "readmissions": 266,
+        "rate": 0.2111
+      },
+      "hip fracture": {
+        "discharges": 847,
+        "readmissions": 128,
+        "rate": 0.1511
+      },
+      "pneumonia": {
+        "discharges": 1106,
+        "readmissions": 172,
+        "rate": 0.1555
+      },
+      "sepsis": {
+        "discharges": 795,
+        "readmissions": 119,
+        "rate": 0.1497
+      },
+      "stroke": {
+        "discharges": 867,
+        "readmissions": 158,
+        "rate": 0.1822
+      }
+    },
+    "riskiest_condition": {
+      "condition": "heart failure",
+      "rate": 0.2111,
+      "discharges": 1260,
+      "readmissions": 266
+    },
+    "by_prior_admissions_band": {
+      "0": {
+        "discharges": 3032,
+        "readmissions": 298,
+        "rate": 0.0983
+      },
+      "1": {
+        "discharges": 2135,
+        "readmissions": 319,
+        "rate": 0.1494
+      },
+      "2": {
+        "discharges": 1364,
+        "readmissions": 282,
+        "rate": 0.2067
+      },
+      "3+": {
+        "discharges": 1469,
+        "readmissions": 464,
+        "rate": 0.3159
+      }
+    },
+    "by_discharge_destination": {
+      "care home": {
+        "discharges": 639,
+        "readmissions": 122,
+        "rate": 0.1909
+      },
+      "home": {
+        "discharges": 4956,
+        "readmissions": 794,
+        "rate": 0.1602
+      },
+      "home with care": {
+        "discharges": 1511,
+        "readmissions": 288,
+        "rate": 0.1906
+      },
+      "rehab": {
+        "discharges": 894,
+        "readmissions": 159,
+        "rate": 0.1779
+      }
+    },
+    "by_deprivation_quintile": {
+      "1": {
+        "discharges": 1936,
+        "readmissions": 359,
+        "rate": 0.1854
+      },
+      "2": {
+        "discharges": 1763,
+        "readmissions": 307,
+        "rate": 0.1741
+      },
+      "3": {
+        "discharges": 1571,
+        "readmissions": 228,
+        "rate": 0.1451
+      },
+      "4": {
+        "discharges": 1443,
+        "readmissions": 266,
+        "rate": 0.1843
+      },
+      "5": {
+        "discharges": 1287,
+        "readmissions": 203,
+        "rate": 0.1577
+      }
+    },
+    "by_admission_type": {
+      "elective": {
+        "discharges": 2530,
+        "readmissions": 305,
+        "rate": 0.1206
+      },
+      "emergency": {
+        "discharges": 5470,
+        "readmissions": 1058,
+        "rate": 0.1934
+      }
+    },
+    "median_los_readmitted": 8.0,
+    "median_los_not_readmitted": 7.0
+  },
+  "model": {
+    "roc_auc": 0.7064,
+    "test_patients": 2000,
+    "test_readmissions": 341,
+    "top_decile_patients": 200,
+    "top_decile_capture_rate": 0.2375,
+    "top_decile_captured": 81,
+    "top_features": [
+      {
+        "feature": "prior_admissions",
+        "importance": 0.3446
+      },
+      {
+        "feature": "comorbidity_count",
+        "importance": 0.2267
+      },
+      {
+        "feature": "length_of_stay_days",
+        "importance": 0.1004
+      },
+      {
+        "feature": "deprivation_quintile",
+        "importance": 0.0456
+      },
+      {
+        "feature": "age_band_85+",
+        "importance": 0.0401
+      },
+      {
+        "feature": "admission_type_elective",
+        "importance": 0.0341
+      }
+    ],
+    "highest_risk_examples": [
+      {
+        "discharge_id": "DIS-01428",
+        "primary_condition": "sepsis",
+        "probability": 0.816,
+        "readmitted_30d": 1,
+        "reasons": [
+          "5 prior admissions in the last year",
+          "6 comorbidities",
+          "emergency admission",
+          "age band 85+"
+        ]
+      },
+      {
+        "discharge_id": "DIS-04414",
+        "primary_condition": "COPD",
+        "probability": 0.797,
+        "readmitted_30d": 0,
+        "reasons": [
+          "emergency admission",
+          "long stay of 17 days",
+          "primary condition: COPD",
+          "age band 75-84"
+        ]
+      },
+      {
+        "discharge_id": "DIS-02101",
+        "primary_condition": "stroke",
+        "probability": 0.794,
+        "readmitted_30d": 1,
+        "reasons": [
+          "5 prior admissions in the last year",
+          "8 comorbidities",
+          "long stay of 10 days",
+          "age band 85+"
+        ]
+      },
+      {
+        "discharge_id": "DIS-04223",
+        "primary_condition": "stroke",
+        "probability": 0.772,
+        "readmitted_30d": 1,
+        "reasons": [
+          "5 prior admissions in the last year",
+          "4 comorbidities",
+          "emergency admission",
+          "long stay of 11 days",
+          "age band 75-84"
+        ]
+      },
+      {
+        "discharge_id": "DIS-05635",
+        "primary_condition": "COPD",
+        "probability": 0.701,
+        "readmitted_30d": 0,
+        "reasons": [
+          "5 prior admissions in the last year",
+          "emergency admission",
+          "long stay of 14 days",
+          "primary condition: COPD",
+          "discharged to home with care"
+        ]
+      }
+    ]
+  },
+  "briefing_claims": 10,
+  "briefing_ungrounded": 0
+}
