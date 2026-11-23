@@ -1,0 +1,94 @@
+{
+  "dataset": {
+    "n": 3000,
+    "prevalence": 0.2423,
+    "train": 1800,
+    "val": 600,
+    "test": 600
+  },
+  "validation": {
+    "raw": {
+      "roc_auc": 0.7949,
+      "brier": 0.1361,
+      "log_loss": 0.4322,
+      "ece": 0.0304
+    },
+    "platt": {
+      "roc_auc": 0.7949,
+      "brier": 0.1354,
+      "log_loss": 0.4306,
+      "ece": 0.0391
+    },
+    "isotonic": {
+      "roc_auc": 0.7903,
+      "brier": 0.1342,
+      "log_loss": 0.465,
+      "ece": 0.0224
+    }
+  },
+  "chosen_calibration": "platt",
+  "test_raw": {
+    "roc_auc": 0.8027,
+    "brier": 0.1417,
+    "log_loss": 0.4395,
+    "ece": 0.0497
+  },
+  "test_calibrated": {
+    "roc_auc": 0.8027,
+    "brier": 0.1415,
+    "log_loss": 0.439,
+    "ece": 0.0414
+  },
+  "threshold": {
+    "chosen": 0.11,
+    "cost_fn": 450.0,
+    "cost_fp": 60.0,
+    "val_cost": 22950.0,
+    "test_cost_at_chosen": 19710.0,
+    "test_cost_at_0.5": 41280.0,
+    "test_confusion": {
+      "tp": 139,
+      "fp": 276,
+      "tn": 178,
+      "fn": 7
+    }
+  },
+  "slices_test": {
+    "age<65": {
+      "n": 312,
+      "prevalence": 0.2115,
+      "roc_auc": 0.7998,
+      "brier": 0.1346
+    },
+    "age65-79": {
+      "n": 201,
+      "prevalence": 0.2338,
+      "roc_auc": 0.7997,
+      "brier": 0.1373
+    },
+    "age80+": {
+      "n": 87,
+      "prevalence": 0.3793,
+      "roc_auc": 0.807,
+      "brier": 0.1764
+    },
+    "prior0": {
+      "n": 226,
+      "prevalence": 0.1239,
+      "roc_auc": 0.7974,
+      "brier": 0.0896
+    },
+    "prior1": {
+      "n": 242,
+      "prevalence": 0.2314,
+      "roc_auc": 0.6959,
+      "brier": 0.168
+    },
+    "prior2+": {
+      "n": 132,
+      "prevalence": 0.4697,
+      "roc_auc": 0.8044,
+      "brier": 0.182
+    }
+  }
+}
