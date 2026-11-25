@@ -59,5 +59,5 @@ def allowed_numbers(overall, medians, gap, model_metrics):
 
 def verify_briefing(text, overall, medians, gap, model_metrics):
     allowed = allowed_numbers(overall, medians, gap, model_metrics)
-    found = re.findall(r"\d+(?:\.\d+)?", text)
+    found = re.findall(r"\d+(?:\.\d+)?", text.replace(",", ""))
     return sorted({n for n in found if n not in allowed})
