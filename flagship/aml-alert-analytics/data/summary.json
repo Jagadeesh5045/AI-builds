@@ -1,0 +1,262 @@
+{
+  "etl": {
+    "raw_rows": 10075,
+    "warehouse_rows": 10000,
+    "quarantined_rows": 75,
+    "quarantine_reasons": {
+      "missing value: customer_id": 10,
+      "transaction_amount out of range: 0.0": 5,
+      "account_age_days out of range: -5": 5,
+      "prior_alerts out of range: -1": 5,
+      "duplicate alert_id": 5,
+      "account_age_days out of range: 99999": 5,
+      "invalid alert_date: 2026-13-45": 5,
+      "invalid alert_date: not-a-date": 5,
+      "transaction_amount out of range: 99999999.0": 5,
+      "invalid channel: pigeon": 5,
+      "transaction_amount out of range: -500.0": 5,
+      "missing value: alert_rule": 5,
+      "invalid customer_risk_tier: extreme": 5,
+      "prior_alerts out of range: 999": 5
+    }
+  },
+  "analytics": {
+    "total_alerts": 10000,
+    "total_suspicious": 1705,
+    "overall_rate": 0.1705,
+    "by_rule": {
+      "dormant_account": {
+        "alerts": 1201,
+        "suspicious": 100,
+        "rate": 0.0833
+      },
+      "high_risk_country": {
+        "alerts": 1592,
+        "suspicious": 223,
+        "rate": 0.1401
+      },
+      "large_transaction": {
+        "alerts": 2916,
+        "suspicious": 647,
+        "rate": 0.2219
+      },
+      "rapid_movement": {
+        "alerts": 1648,
+        "suspicious": 226,
+        "rate": 0.1371
+      },
+      "sanctions_match": {
+        "alerts": 818,
+        "suspicious": 174,
+        "rate": 0.2127
+      },
+      "structuring": {
+        "alerts": 1825,
+        "suspicious": 335,
+        "rate": 0.1836
+      }
+    },
+    "riskiest_rule": {
+      "rule": "large_transaction",
+      "rate": 0.2219,
+      "alerts": 2916,
+      "suspicious": 647
+    },
+    "by_channel": {
+      "atm": {
+        "alerts": 976,
+        "suspicious": 136,
+        "rate": 0.1393
+      },
+      "branch": {
+        "alerts": 1861,
+        "suspicious": 316,
+        "rate": 0.1698
+      },
+      "correspondent": {
+        "alerts": 808,
+        "suspicious": 196,
+        "rate": 0.2426
+      },
+      "mobile": {
+        "alerts": 2169,
+        "suspicious": 332,
+        "rate": 0.1531
+      },
+      "online": {
+        "alerts": 2830,
+        "suspicious": 466,
+        "rate": 0.1647
+      },
+      "wire": {
+        "alerts": 1356,
+        "suspicious": 259,
+        "rate": 0.191
+      }
+    },
+    "riskiest_channel": {
+      "channel": "correspondent",
+      "rate": 0.2426,
+      "alerts": 808,
+      "suspicious": 196
+    },
+    "by_risk_tier": {
+      "high": {
+        "alerts": 1473,
+        "suspicious": 485,
+        "rate": 0.3293
+      },
+      "low": {
+        "alerts": 5264,
+        "suspicious": 649,
+        "rate": 0.1233
+      },
+      "medium": {
+        "alerts": 3263,
+        "suspicious": 571,
+        "rate": 0.175
+      }
+    },
+    "by_amount_band": {
+      "10k_to_50k": {
+        "alerts": 2445,
+        "suspicious": 467,
+        "rate": 0.191
+      },
+      "1k_to_10k": {
+        "alerts": 5671,
+        "suspicious": 800,
+        "rate": 0.1411
+      },
+      "50k_plus": {
+        "alerts": 920,
+        "suspicious": 312,
+        "rate": 0.3391
+      },
+      "under_1k": {
+        "alerts": 964,
+        "suspicious": 126,
+        "rate": 0.1307
+      }
+    },
+    "by_disposition": {
+      "confirmed_suspicious": {
+        "alerts": 1705,
+        "suspicious": 1705,
+        "rate": 1.0
+      },
+      "false_positive": {
+        "alerts": 8295,
+        "suspicious": 0,
+        "rate": 0.0
+      }
+    },
+    "median_amount_suspicious": 7872.7,
+    "median_amount_not_suspicious": 4786.53
+  },
+  "model": {
+    "roc_auc": 0.7265,
+    "test_alerts": 2500,
+    "test_suspicious": 426,
+    "top_decile_alerts": 250,
+    "top_decile_capture_rate": 0.27,
+    "top_decile_captured": 115,
+    "top_features": [
+      {
+        "feature": "prior_alerts",
+        "importance": 0.3112
+      },
+      {
+        "feature": "transaction_amount",
+        "importance": 0.3052
+      },
+      {
+        "feature": "account_age_days",
+        "importance": 0.128
+      },
+      {
+        "feature": "customer_risk_tier_high",
+        "importance": 0.1053
+      },
+      {
+        "feature": "customer_risk_tier_low",
+        "importance": 0.0471
+      },
+      {
+        "feature": "alert_rule_dormant_account",
+        "importance": 0.0328
+      }
+    ],
+    "highest_risk_examples": [
+      {
+        "alert_id": "AML-07662",
+        "alert_rule": "large_transaction",
+        "probability": 0.941,
+        "confirmed_suspicious": 1,
+        "reasons": [
+          "large transaction amount of 226,663.67",
+          "customer in the high risk tier",
+          "rule fired: large_transaction",
+          "6 prior alerts for this customer",
+          "new account, opened 5 days ago",
+          "correspondent channel"
+        ]
+      },
+      {
+        "alert_id": "AML-05356",
+        "alert_rule": "large_transaction",
+        "probability": 0.905,
+        "confirmed_suspicious": 1,
+        "reasons": [
+          "large transaction amount of 76,892.02",
+          "customer in the high risk tier",
+          "rule fired: large_transaction",
+          "6 prior alerts for this customer",
+          "correspondent channel"
+        ]
+      },
+      {
+        "alert_id": "AML-05029",
+        "alert_rule": "structuring",
+        "probability": 0.839,
+        "confirmed_suspicious": 1,
+        "reasons": [
+          "transaction amount of 30,963.17",
+          "customer in the high risk tier",
+          "high-risk rule fired: structuring",
+          "5 prior alerts for this customer",
+          "new account, opened 5 days ago",
+          "wire channel"
+        ]
+      },
+      {
+        "alert_id": "AML-00937",
+        "alert_rule": "large_transaction",
+        "probability": 0.837,
+        "confirmed_suspicious": 1,
+        "reasons": [
+          "large transaction amount of 101,176.46",
+          "customer in the high risk tier",
+          "rule fired: large_transaction",
+          "6 prior alerts for this customer",
+          "wire channel"
+        ]
+      },
+      {
+        "alert_id": "AML-04970",
+        "alert_rule": "large_transaction",
+        "probability": 0.795,
+        "confirmed_suspicious": 1,
+        "reasons": [
+          "large transaction amount of 524,560.51",
+          "customer in the high risk tier",
+          "rule fired: large_transaction",
+          "4 prior alerts for this customer",
+          "wire channel"
+        ]
+      }
+    ]
+  },
+  "briefing_claims": 10,
+  "briefing_ungrounded": 0
+}
